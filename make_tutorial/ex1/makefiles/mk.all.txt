@@ -1,0 +1,97 @@
+###################### mk1 #####################
+
+calc: compute.c compute.h input.c input.h main.c
+	gcc -o calc compute.c main.c input.c
+
+clean:
+	rm calc
+
+
+###################### mk2 #####################
+
+CC=gcc
+CFLAGS=-O3 -Wall
+
+calc: compute.c compute.h input.c input.h main.c
+	$(CC) $(CFLAGS) -o calc compute.c main.c input.c
+
+
+
+###################### mk3 #####################
+
+CC=gcc
+CFLAGS=-O3 -Wall
+
+calc: compute.o main.o input.o
+	$(CC) $(CFLAGS) -o calc compute.o main.o input.o
+
+compute.o: compute.c compute.h
+	$(CC) $(CFLAGS) -c compute.c
+
+input.o: input.c input.h
+	$(CC) $(CFLAGS) -c input.c
+
+main.o: main.c
+	$(CC) $(CFLAGS) -c main.c
+
+clean: 
+	rm calc *.o
+
+
+###################### mk4 #####################
+
+
+CC=gcc
+CFLAGS=-O3 -Wall
+
+calc: compute.o main.o input.o
+	$(CC) $(CFLAGS) -o $@ $^
+    
+compute.o: compute.c compute.h
+	$(CC) $(CFLAGS) -c $<
+
+input.o: input.c input.h
+	$(CC) $(CFLAGS) -c $<
+
+main.o: main.c
+	$(CC) $(CFLAGS) -c $<
+
+clean:
+	rm calc *.o
+
+
+###################### mk5 #####################
+
+CC=gcc
+CFLAGS=-O3 -Wall
+
+calc: compute.o main.o input.o
+	$(CC) $(CFLAGS) -o $@ compute.c main.c input.c
+
+%.o: %.c %h
+	$(CC) $(CFLAGS) -c $<
+
+main.o: main.c
+	$(CC) $(CFLAGS) -c $<
+
+clean:
+	rm calc *.o
+
+###################### mk6 #####################
+
+CC=gcc
+CFLAGS=-Wall
+HEADERS=$(wildcard *.h)
+SRCS=$(wildcard *.c)
+OBJS=$(SRCS:.c=.o)
+TARGET=calc
+
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(TARGET)
+
+%.o: %.c $(HEADERS)
+	$(CC) $(CFLAGS) -c $<
+
+clean:
+	rm -f $(TARGET) $(OBJS)

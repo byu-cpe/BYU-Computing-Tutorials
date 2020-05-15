@@ -1,0 +1,22 @@
+plugins {
+    id 'application'
+}
+
+apply plugin: 'java'
+
+application {
+    mainClassName = "edu.byu.ee.ccl.HelloWorld"    
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+}
+
+dependencies {
+    compile files(System.env.RAPIDWRIGHT_PATH + '/build/libs/rapidwright.jar')
+    // compile files('/mnt/c/Users/Jeff/rapidwright/build/libs/rapidwright.jar')
+}

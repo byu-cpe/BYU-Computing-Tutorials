@@ -1,0 +1,5 @@
+calc: compute.c compute.h input.c input.h main.c
+	gcc -o calc compute.c main.c input.c
+
+clean:
+	rm calc

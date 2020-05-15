@@ -1,0 +1,9 @@
+.gradle
+/bin
+/build
+/gradle
+/gradlew*
+.classpath
+.project
+org.eclipse.*
+*.dcp

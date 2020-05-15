@@ -1,0 +1,16 @@
+CC=gcc
+CFLAGS=-Wall
+HEADERS=$(wildcard *.h)
+SRCS=$(wildcard *.c)
+OBJS=$(SRCS:.c=.o)
+TARGET=calc
+
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(TARGET)
+
+%.o: %.c $(HEADERS)
+	$(CC) $(CFLAGS) -c $<
+
+clean:
+	rm -f $(TARGET) $(OBJS)

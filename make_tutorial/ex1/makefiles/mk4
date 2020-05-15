@@ -1,0 +1,17 @@
+CC=gcc
+CFLAGS=-O3 -Wall
+
+calc: compute.o main.o input.o
+	$(CC) $(CFLAGS) -o $@ compute.o main.o input.o
+
+compute.o: compute.c compute.h
+	$(CC) $(CFLAGS) -c $<
+
+input.o: input.c input.h
+	$(CC) $(CFLAGS) -c $<
+
+main.o: main.c
+	$(CC) $(CFLAGS) -c $<
+
+clean:
+	rm calc *.o

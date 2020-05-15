@@ -1,0 +1,7 @@
+CC=gcc
+CFLAGS=-O3 -Wall
+
+calc: compute.c compute.h input.c input.h main.c
+	$(CC) $(CFLAGS) -o calc compute.c main.c input.c
+
+
