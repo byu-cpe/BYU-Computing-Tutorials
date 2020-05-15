@@ -1,3 +1,3 @@
 # BYU-Computing-Tutorials
 
-See the [wiki](https://github.com/byuccl/FPGA-Tutorials/wiki)
+See the [wiki](https://github.com/byuccl/BYU-Computing-Tutorials/wiki)
